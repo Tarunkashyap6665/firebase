@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>New User</title>
     <!--Bootstrap CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Custom CSS Files -->
@@ -34,7 +34,7 @@
         <form id="create">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="Email1" aria-describedby="emailHelp">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
@@ -57,7 +57,7 @@
         <form id="login">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="Email" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="Email" aria-describedby="emailHelp">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
@@ -95,12 +95,6 @@
           createUser(email,password1);
           console.log("User Successfully Created");
         }
-        else{
-          $("#error").text("Password Not Match").css("color","red");
- 
-        }
-        f1.action="home.html";
-          f1.submit()
       })
 
       $("#signin").click(function(event){
@@ -108,15 +102,23 @@
         let email=$("#Email1").val();
         let password=$("#Password1").val();
         login(email,password)
-       
-        let f2=document.getElementById("login")
-        
-          f2.action="home.html";
-        f2.submit()
         
 
       })
+      firebase.auth().onAuthStateChanged(function(user){
+      if(user){
+        // login
+        location.href="home.html"
+        console.log("user Login Successfull..................")
 
+      }
+      else{
+        // logout
+        
+        console.log("user Logout Successfull..................")
+      }
+    })
+     
     </script>
   </body>
 

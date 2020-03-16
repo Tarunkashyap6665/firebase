@@ -13,7 +13,7 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-
+  // firebase.auth.Auth.Persistence.LOCAL
       //   create new user
       function createUser(email,password){
         firebase.auth().createUserWithEmailAndPassword(email,password).catch(function(error){
@@ -32,24 +32,6 @@
     }
 
     // user state
-    firebase.auth().onAuthStateChanged(function(user){
-      if(user){
-        // login
-       
-        // console.log(f1)
-       
-
-        console.log("user Login Successfull..................")
-
-      }
-      else{
-        // logout
-        
-        console.log("user Logout Successfull..................")
-      }
-    })
-
-
 
 
       
